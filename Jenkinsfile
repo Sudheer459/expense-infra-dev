@@ -30,7 +30,7 @@ pipeline {
                 ok "Yes, we should."
             }
             steps {
-                ssh """
+                sh """
                 cd 01-vpc
                 terraform apply -auto-approve
                 """
