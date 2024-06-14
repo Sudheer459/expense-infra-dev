@@ -52,13 +52,14 @@ pipeline {
             when {
                 expression{
                     params.action == 'Destroy'
-            }
-            steps {
-                sh """
-                cd 01-vpc
-                terraform destroy -auto-approve
-                """
-            }
+                }
+                steps {
+                    sh """
+                    cd 01-vpc
+                    terraform destroy -auto-approve
+                    """
+                }
+            }    
         }
     }   
     post {
