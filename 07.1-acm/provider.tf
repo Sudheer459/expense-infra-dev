@@ -9,7 +9,7 @@ terraform {
         bucket = "sudheerdevops59"
         key    = "expense-dev-acm1"
         region = "us-east-1"
-        dynamodb_table = "daws-locking"
+        dynamodb_table = "expense-infra-dev"
     }
 }
 
