@@ -5,7 +5,7 @@ pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
-        ansiColor('Xterm')        
+        ansiColor('xterm')
     }
     parameters {
         choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
@@ -13,10 +13,10 @@ pipeline {
     stages {
         stage('Init') {
             steps {
-                sh """
+               sh """
                 cd 01-vpc
                 terraform init -reconfigure
-                """
+               """
             }
         }
         stage('Plan') {
@@ -49,6 +49,7 @@ pipeline {
                 """
             }
         }
+
         stage('Destroy') {
             when {
                 expression{
@@ -60,19 +61,19 @@ pipeline {
                 cd 01-vpc
                 terraform destroy -auto-approve
                 """
-            }   
+            }
         }
-    }   
-    post {
-        always {
+    }
+    post { 
+        always { 
             echo 'I will always say Hello again!'
             deleteDir()
         }
-        success {
+        success { 
             echo 'I will run when pipeline is success'
         }
-        failure {
-            echo 'I will run when pipeline is failures'
+        failure { 
+            echo 'I will run when pipeline is failure'
         }
     }
 }
